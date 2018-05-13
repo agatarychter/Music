@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Music</string>
+    <string name="river">River</string>
+    <string name="leon_bridges">Leon Bridges</string>
+    <string name="way_down">Way down we go</string>
+    <string name="kaleo">Kaleo</string>
+    <string name="losing_my_religion">Losing my religion</string>
+    <string name="rem">R.E.M</string>
+    <string name="author">Author</string>
+    <string name="settings">Setting</string>
+    <string name="normal">Normal</string>
+    <string name="fast">Fast</string>
+    <string name="slow">Slow</string>
+    <string name="river_time">3:57</string>
+    <string name="way_time">3:19</string>
+    <string name="rem_time">4:29</string>
+    <string name="descrip">Author : Agata Rychter</string>
+</resources>

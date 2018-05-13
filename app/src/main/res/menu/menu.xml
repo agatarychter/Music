@@ -1,0 +1,19 @@
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/about_author"
+        android:title="@string/author" />
+    <item
+        android:id="@+id/normal"
+        android:title="@string/normal" />
+    <item
+        android:id="@+id/fast"
+        android:title="@string/fast" />
+
+    <item
+        android:id="@+id/slow"
+        android:title="@string/slow" />
+
+
+</menu>
