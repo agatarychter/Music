@@ -7,9 +7,9 @@
     <item
         android:id="@+id/normal"
         android:title="@string/normal" />
-    <item
-        android:id="@+id/fast"
-        android:title="@string/fast" />
+    <!--<item-->
+        <!--android:id="@+id/fast"-->
+        <!--android:title="@string/fast" />-->
 
     <item
         android:id="@+id/slow"

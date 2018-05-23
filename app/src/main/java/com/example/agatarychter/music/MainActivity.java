@@ -16,7 +16,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -29,9 +28,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
     private RecyclerView recyclerView;
     private MyAdapter adapter;
     private List<Song> itemList;
-    FrameLayout container;
     private static final String SONGS = "SONGS";
-    private String speed = "normal";
+    private String speed = NORMAL_TXT ;
     private ImageButton play;
     private ImageButton next;
     private ImageButton previous;
@@ -41,11 +39,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
     private int pauseCurrentPos=0;
     private MyViewModel myViewModel;
 
-    private static final float FAST = 2.0f ;
     private static final float SLOW = 0.5f;
     private static final float NORMAL = 1.0f;
 
-    private static final String FAST_TXT = "fast" ;
     private static final String SLOW_TXT = "slow";
     private static final String NORMAL_TXT = "normal";
     private static final int toMoveMsec = 10000;
@@ -124,16 +120,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
             case R.id.normal:
                 speed = NORMAL_TXT;
                 if(mediaPlayer!=null)
-                    mediaPlayer.setPlaybackParams(mediaPlayer.getPlaybackParams().setSpeed(NORMAL));
-                return true;
-            case R.id.fast:
-                speed = FAST_TXT;
-                if(mediaPlayer!=null)
-                    mediaPlayer.setPlaybackParams(mediaPlayer.getPlaybackParams().setSpeed(FAST));
+                    setSpeed(speed);
+                    return true;
             case R.id.slow:
                 speed = SLOW_TXT;
                 if(mediaPlayer!=null)
-                    mediaPlayer.setPlaybackParams(mediaPlayer.getPlaybackParams().setSpeed(SLOW));
+                    setSpeed(speed);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -173,8 +165,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
             }
         }).start();
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int progress=0;
-
             @Override
             public void onProgressChanged(final SeekBar seekBar, int ProgressValue, boolean fromUser) {
                 if (fromUser) {
@@ -227,10 +217,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
     }
 
     private void setSpeed(String speed){
-        if(speed.equals(FAST_TXT)) {
-            mediaPlayer.setPlaybackParams(mediaPlayer.getPlaybackParams().setSpeed(FAST));
-        }
-        else if(speed.equals(SLOW_TXT))
+        if(speed.equals(SLOW_TXT))
             mediaPlayer.setPlaybackParams(mediaPlayer.getPlaybackParams().setSpeed(SLOW));
         else
             mediaPlayer.setPlaybackParams(mediaPlayer.getPlaybackParams().setSpeed(NORMAL));
@@ -281,7 +268,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
                 public void onClick(View view) {
                     if(mediaPlayer!=null)
                         mediaPlayer.stop();
-//                    startService(new Intent(MyService.ACTION_PLAY));
                     mediaPlayer = MediaPlayer.create(getApplicationContext(), singleItem.getSound());
                     setSpeed(speed);
                     seekBar.setMax(mediaPlayer.getDuration());
